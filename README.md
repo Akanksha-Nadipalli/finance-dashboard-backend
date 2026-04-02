@@ -6,6 +6,8 @@ This project implements a backend system for a finance dashboard that manages fi
 
 It is designed to demonstrate backend architecture, API design, data modeling, and business logic handling. The system supports multiple user roles and provides aggregated financial insights for dashboard usage.
 
+The system is structured with clear separation of concerns between models, schemas, and API routes.
+
 ---
 
 ## 🔗 Live API Docs
@@ -158,6 +160,9 @@ uvicorn app.main:app --reload
    - GET /dashboard
    - GET /dashboard/category
    - GET /dashboard/recent
+  
+6. (Optional) Test pagination:
+   - GET /records?skip=0&limit=2
   
 ---     
 
