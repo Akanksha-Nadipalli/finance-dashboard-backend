@@ -1,3 +1,7 @@
+## 🔗 Live API Docs
+Run locally and access:
+http://127.0.0.1:8000/docs
+
 # Finance Data Processing and Access Control Backend
 
 ## 📌 Overview
