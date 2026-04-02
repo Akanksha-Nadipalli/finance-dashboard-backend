@@ -10,10 +10,13 @@ The system is structured with clear separation of concerns between models, schem
 
 ---
 
-## 🔗 Live API Docs
+## 🌐 Live Deployment
 
-Run the server locally and access interactive API documentation:
-http://127.0.0.1:8000/docs
+API is deployed and accessible at:
+https://finance-backend-rr63.onrender.com
+
+Swagger Docs:
+https://finance-backend-rr63.onrender.com/docs
 
 ---
 
