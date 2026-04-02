@@ -17,10 +17,10 @@ http://127.0.0.1:8000/docs
 
 ## 🛠️ Tech Stack
 
-* FastAPI
-* SQLite
-* SQLAlchemy
-* Pydantic
+* FastAPI (API framework)
+* SQLite (database)
+* SQLAlchemy (ORM)
+* Pydantic (data validation)
 
 ---
 
@@ -116,8 +116,8 @@ These endpoints demonstrate backend aggregation and data processing beyond basic
 1. Clone the repository:
 
 ```
-git clone <your-repo-link>
-cd finance-backend
+git clone https://github.com/Akanksha-Nadipalli/finance-dashboard-backend
+cd finance-dashboard-backend
 ```
 
 2. Create virtual environment:
@@ -141,9 +141,30 @@ uvicorn app.main:app --reload
 
 ---
 
+## 🧪 How to Test
+
+1. Open Swagger UI:
+   http://127.0.0.1:8000/docs
+
+2. Create a user using POST /users
+
+3. Create financial records using POST /records
+
+4. Test role-based access:
+   - Change user role using PUT /users/{id}
+   - Try accessing restricted endpoints
+
+5. View dashboard analytics using:
+   - GET /dashboard
+   - GET /dashboard/category
+   - GET /dashboard/recent
+  
+---     
+
 ## 🧠 Assumptions & Design Decisions
 
 * Mock authentication is used (default user_id = 1)
+* User active/inactive status is enforced during request handling
 * Role-based access control implemented using dependency-based checks
 * System simulates multi-user behavior without full authentication
 * Designed to be extendable with JWT authentication and production-ready databases
