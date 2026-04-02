@@ -1,14 +1,17 @@
-## 🔗 Live API Docs
-Run locally and access:
-http://127.0.0.1:8000/docs
-
 # Finance Data Processing and Access Control Backend
 
 ## 📌 Overview
 
-This project is a backend system for a finance dashboard that manages financial records and enforces role-based access control.
+This project implements a backend system for a finance dashboard that manages financial records and enforces role-based access control.
 
-It allows different users to interact with financial data based on their roles, and provides summary analytics for dashboard visualization.
+It is designed to demonstrate backend architecture, API design, data modeling, and business logic handling. The system supports multiple user roles and provides aggregated financial insights for dashboard usage.
+
+---
+
+## 🔗 Live API Docs
+
+Run the server locally and access interactive API documentation:
+http://127.0.0.1:8000/docs
 
 ---
 
@@ -28,33 +31,39 @@ It allows different users to interact with financial data based on their roles, 
 * Create users
 * Assign roles (viewer, analyst, admin)
 * Update user details and roles
+* Support for user status (active/inactive)
+
+---
 
 ### 2. Role-Based Access Control
 
-* Viewer: Access only dashboard
-* Analyst: View records and dashboard
-* Admin: Full access (CRUD operations)
+* Viewer → Access dashboard only
+* Analyst → Access records and dashboard
+* Admin → Full access (CRUD operations + user management)
 
-Access control is implemented using dependency-based role checks.
+Access control is implemented using dependency injection and role validation logic at the API level.
 
 ---
 
-### 3. Financial Records
+### 3. Financial Records Management
 
-* Create, read, update, delete records
-* Fields: amount, type, category, date, notes
+* Create, read, update, delete financial records
+* Fields: amount, type (income/expense), category, date, notes
 * Filtering support (type, category)
+* Pagination support for scalable data retrieval
 
 ---
 
-### 4. Dashboard APIs
+### 4. Dashboard & Analytics APIs
 
 * Total income
 * Total expenses
 * Net balance
-* Category-wise totals
+* Category-wise aggregation
 * Recent transactions
-* Trends based on date
+* Trend analysis based on dates
+
+These endpoints demonstrate backend aggregation and data processing beyond basic CRUD operations.
 
 ---
 
@@ -62,19 +71,23 @@ Access control is implemented using dependency-based role checks.
 
 * Input validation using Pydantic
 * Amount must be greater than 0
-* Type must be either "income" or "expense"
-* Proper HTTP status codes (400, 403, 404)
+* Type restricted to "income" or "expense"
+* Proper HTTP status codes:
+
+  * 400 → Bad request (validation errors)
+  * 403 → Access denied
+  * 404 → Resource not found
 
 ---
 
 ### 6. Data Persistence
 
 * SQLite database using SQLAlchemy ORM
-* Database stored locally for simplicity
+* Lightweight and suitable for local development
 
 ---
 
-## 📡 API Endpoints (Sample)
+## 📡 API Endpoints (Summary)
 
 ### Users
 
@@ -98,14 +111,6 @@ Access control is implemented using dependency-based role checks.
 
 ---
 
-## 📖 API Documentation
-
-Interactive API documentation is available via Swagger UI:
-
-http://127.0.0.1:8000/docs
-
----
-
 ## ⚙️ Setup Instructions
 
 1. Clone the repository:
@@ -125,7 +130,7 @@ venv\Scripts\activate
 3. Install dependencies:
 
 ```
-pip install fastapi uvicorn sqlalchemy pydantic email-validator
+pip install -r requirements.txt
 ```
 
 4. Run the server:
@@ -139,9 +144,9 @@ uvicorn app.main:app --reload
 ## 🧠 Assumptions & Design Decisions
 
 * Mock authentication is used (default user_id = 1)
-* Role-based access is enforced using dependency injection
-* Database is local SQLite for simplicity
-* System is designed to be easily extendable with authentication (JWT)
+* Role-based access control implemented using dependency-based checks
+* System simulates multi-user behavior without full authentication
+* Designed to be extendable with JWT authentication and production-ready databases
 
 ---
 
@@ -150,12 +155,12 @@ uvicorn app.main:app --reload
 * Pagination support for records
 * Category-based aggregation
 * Recent transaction tracking
-* Trend analysis
+* Trend analysis endpoints
 
 ---
 
 ## 📌 Conclusion
 
-This project demonstrates backend design, API structuring, role-based access control, and data processing for a finance dashboard system.
+This project demonstrates a structured backend system with clear separation of concerns, role-based access control, and meaningful data processing logic.
 
-It focuses on clarity, maintainability, and logical organization of backend components.
+It focuses on correctness, maintainability, and practical backend design aligned with real-world use cases.
